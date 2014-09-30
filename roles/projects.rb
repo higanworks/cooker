@@ -23,22 +23,22 @@ override_attributes({
       # for wantedly/wantedly
       #
       "imagemagick",
-      "phantomjs",
+#      "phantomjs",
       "openssl",
       "readline"
     ],
     "casks" => [
       "google-chrome",
       "google-japanese-ime",
-      "sublime-text",
-      "coteditor",
+#      "sublime-text",
+#      "coteditor",
       "slack",
       "skitch",
       "evernote",
       "dropbox",
       "dropbox-encore",
-      "caffeine",
-      "postgres",
+#      "caffeine",
+#      "postgres",
     ]
   },
   "rbenv" => {

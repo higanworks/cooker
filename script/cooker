@@ -126,7 +126,7 @@ ARCHFLAGS_OPTION= 'ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-
 #
 # Check for Chef
 #
-if File.executable?('/usr/bin/chef-solo')
+if File.executable?('./bin/chef-solo')
   success "Chef found."
 else
   warn "You need to install Chef."
@@ -139,7 +139,8 @@ else
     #   Use '#curl -L https://www.opscode.com/chef/install.sh | sudo bash'
     #   if original script supports os x 10.9
     #system("curl -L https://gist.github.com/ringohub/7660676/raw/bc25c3274d55a799f11e4aa012bf3e809a7cf285/install.sh | sudo bash")
-    system("sudo #{ARCHFLAGS_OPTION} /usr/bin/gem install chef --no-ri --no-rdoc")
+    # system("sudo #{ARCHFLAGS_OPTION} /usr/bin/gem install chef --no-ri --no-rdoc")
+    system("bundle install --path vendor/bundle --binstubs")
     exit 1 if $? != 0
     puts ""
   else
@@ -149,41 +150,17 @@ else
 end
 
 #
-# Check for Berkshelf
-#
-if File.executable?('/usr/bin/berks')
-  success "Berkshelf found."
-else
-  warn "You need to install Berkshelf."
-  success "Installing berkshelf..."
-  separator "gem's output"
-  system("sudo #{ARCHFLAGS_OPTION} /usr/bin/gem install berkshelf --no-ri --no-rdoc")
-end
-
-#
-# Check for Berkshelf version
-#
-if `/usr/bin/berks version`.split('.').first == '3'
-  success "Your Berkshelf version is correct."
-else
-  warn "You need to upgrade Berkshelf."
-  success "Upgrade berkshelf..."
-  separator "gem's output"
-  system("sudo #{ARCHFLAGS_OPTION} /usr/bin/gem update berkshelf --no-ri --no-rdoc")
-end
-
-#
 # Run Berkshelf
 #
-if File.executable?('/usr/bin/berks') && File.exists?("#{ROOT_DIR}/.chef/Berksfile")
+if File.executable?('./bin/berks') && File.exists?("#{ROOT_DIR}/.chef/Berksfile")
   Dir.chdir "#{ROOT_DIR}/.chef"
 
   success "Installing chef cookbooks..."
   separator "install output"
-  system("/usr/bin/berks install")
-  system("/usr/bin/berks update")
+  system("../bin/berks install")
+  system("../bin/berks update")
   system("rm -r #{ROOT_DIR}/.chef/vendor/cookbooks")
-  system("/usr/bin/berks vendor #{ROOT_DIR}/.chef/vendor/cookbooks")
+  system("../bin/berks vendor #{ROOT_DIR}/.chef/vendor/cookbooks")
   exit 1 if $? != 0
   puts ""
 
@@ -202,7 +179,7 @@ system("sudo chown -R `whoami`:staff /usr/local")
 Dir.chdir "#{ROOT_DIR}/.chef"
 success "Running chef..."
 separator "chef's output"
-system("sudo /usr/bin/chef-solo -c #{ROOT_DIR}/.chef/solo.rb")
+system("sudo ../bin/chef-solo -c #{ROOT_DIR}/.chef/solo.rb")
 exit 1 if $? != 0
 puts ""
 Dir.chdir "#{ROOT_DIR}"
