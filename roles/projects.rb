@@ -4,7 +4,7 @@ run_list(
   "recipe[homebrew]",          # Don't remove this
   "recipe[os_x::brew_bundle]", # Don't remove this
   "recipe[os_x::ruby]",
-  "recipe[projects::wantedly]"
+#  "recipe[projects::wantedly]"
 )
 override_attributes({
   "homebrew" => {
@@ -29,7 +29,7 @@ override_attributes({
     ],
     "casks" => [
       "google-chrome",
-      "google-japanese-ime",
+#      "google-japanese-ime",  ## stash due to fail
 #      "sublime-text",
 #      "coteditor",
       "slack",
