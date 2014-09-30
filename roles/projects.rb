@@ -50,9 +50,9 @@ override_attributes({
     "gems"   => {
       "2.1.2" => [
         { "name" => "bundler" },
-        { "name" => "rails" },
-        { "name" => "chef" },
-        { "name" => "berkshelf" },
+#        { "name" => "rails" },
+#        { "name" => "chef" },
+#        { "name" => "berkshelf" },
       ]
     }
   }
