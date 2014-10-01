@@ -89,7 +89,9 @@ This recipe will be added to run list automatically.
 
 Note for higanlocal
 
+```
 cd setup/
 git clone https://github.com/higanworks/cooker.git
 cd cooker
 ./script/cooker
+```
