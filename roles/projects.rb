@@ -47,14 +47,16 @@ override_attributes({
     "user"   => ENV['HOME'].sub("\/Users\/", ""),
     "group"  => "staff",
     "root"   => "#{ENV['HOME']}/.rbenv",
-    "rubies" => ["2.1.2"],
-    "global" => "2.1.2",
+    "rubies" => ["2.1.2", "2.1.3"],
+    "global" => "2.1.3",
     "gems"   => {
       "2.1.2" => [
         { "name" => "bundler" },
-#        { "name" => "rails" },
-#        { "name" => "chef" },
-#        { "name" => "berkshelf" },
+        { "name" => "pry" },
+      ],
+      "2.1.3" => [
+        { "name" => "bundler" },
+        { "name" => "pry" },
       ]
     }
   }
