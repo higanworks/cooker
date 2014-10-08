@@ -37,7 +37,7 @@ override_attributes({
       "evernote",
       "dropbox",
       "dropbox-encore",
-      "karabiner",
+#      "karabiner",
       "firefox",
 #      "caffeine",
 #      "postgres",

@@ -96,11 +96,11 @@ cd cooker
 ./script/cooker
 ```
 
-### redo after rbenv init
+### redo or update after rbenv init
 
 
 ```
 cd setup/cooker
 git pull
-PATH=/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin ./script/cooker
+./script/cooker
 ```
